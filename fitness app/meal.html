@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meal Planning | Fitness App</title>
+  <link rel="stylesheet" href="./meal.css">
+
+</head>
+<body>
+
+ 
+
+  <!-- Meal Planning Section -->
+  <section class="section white">
+    <div class="container">
+      <h2 class="section-title">Meal Planner</h2>
+
+      <form class="meal-form">
+        <label for="meal-type">Meal Type:</label>
+        <select id="meal-type" required>
+          <option value="">Select</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Snack">Snack</option>
+        </select>
+
+        <label for="meal-description">Meal Description:</label>
+        <input type="text" id="meal-description" placeholder="e.g. Oatmeal with fruits" required>
+
+        <button type="submit" class="btn-primary">Add Meal</button>
+      </form>
+
+      <div id="meal-plan">
+        <h3>Your Planned Meals</h3>
+        <ul id="meal-items"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer light">
+    <p>&copy; 2025 Fitness App. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const mealForm = document.querySelector('.meal-form');
+    const mealItems = document.getElementById('meal-items');
+
+    mealForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const type = document.getElementById('meal-type').value;
+      const desc = document.getElementById('meal-description').value;
+
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${type}</strong>: ${desc}`;
+      mealItems.prepend(li);
+
+      mealForm.reset();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Log Workouts | Fitness App</title>
+  <link rel="stylesheet" href="./log.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+ 
+
+  <!-- Log Workouts Section -->
+  <section class="section white">
+    <div class="container">
+      <h2 class="section-title">Log Your Workouts</h2>
+      <form class="log-form">
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+
+        <label for="exercise">Exercise:</label>
+        <input type="text" id="exercise" placeholder="e.g. Push-ups" required>
+
+        <label for="duration">Duration (minutes):</label>
+        <input type="number" id="duration" min="1" required>
+
+        <label for="notes">Notes (optional):</label>
+        <textarea id="notes" placeholder="Any additional notes..."></textarea>
+
+        <button type="submit" class="btn-primary">Save Workout</button>
+      </form>
+
+      <div id="workout-log">
+        <h3>Recent Workouts</h3>
+        <ul id="log-list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer light">
+    <p>&copy; 2025 Fitness App. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const form = document.querySelector('.log-form');
+    const logList = document.getElementById('log-list');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const date = document.getElementById('date').value;
+      const exercise = document.getElementById('exercise').value;
+      const duration = document.getElementById('duration').value;
+      const notes = document.getElementById('notes').value;
+
+      const logItem = document.createElement('li');
+      logItem.textContent = `${date}: ${exercise} for ${duration} minutes ${notes ? '- ' + notes : ''}`;
+      logList.prepend(logItem);
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>

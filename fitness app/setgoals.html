@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Set Goals | Fitness App</title>
+  <link rel="stylesheet" href="./goals.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+  <!-- Set Goals Section -->
+  <section class="section white">
+    <div class="container">
+      <h2 class="section-title">Set Your Fitness Goals</h2>
+      <form class="goal-form">
+        <label for="goal-title">Goal Title:</label>
+        <input type="text" id="goal-title" placeholder="e.g. Run 5K" required>
+
+        <label for="goal-deadline">Target Date:</label>
+        <input type="date" id="goal-deadline" required>
+
+        <label for="goal-details">Details (optional):</label>
+        <textarea id="goal-details" placeholder="Describe your goal..."></textarea>
+
+        <button type="submit" class="btn-primary">Add Goal</button>
+      </form>
+
+      <div id="goals-list">
+        <h3>Your Current Goals</h3>
+        <ul id="goal-items"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer light">
+    <p>&copy; 2025 Fitness App. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const goalForm = document.querySelector('.goal-form');
+    const goalItems = document.getElementById('goal-items');
+
+    goalForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const title = document.getElementById('goal-title').value;
+      const deadline = document.getElementById('goal-deadline').value;
+      const details = document.getElementById('goal-details').value;
+
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${title}</strong> - Target: ${deadline} ${details ? '<br>' + details : ''}`;
+      goalItems.prepend(li);
+
+      goalForm.reset();
+    });
+  </script>
+</body>
+</html>

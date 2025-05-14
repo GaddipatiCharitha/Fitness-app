@@ -1,0 +1,26 @@
+/* Workout Logging Form */
+.log-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 0 auto 40px;
+}
+
+.log-form input,
+.log-form textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+#workout-log {
+  max-width: 600px;
+  margin: auto;
+}
+
+#log-list {
+  list-style-type: disc;
+  padding-left: 20px;
+}
